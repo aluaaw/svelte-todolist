@@ -2,6 +2,8 @@
   export let name;
   import Todolist from "./Todolist.svelte";
   import { todolist } from "./store";
+
+  function editTodo() {}
 </script>
 
 <main>
@@ -15,6 +17,8 @@
       <input type="checkbox" />
       {i + 1}. {todo}
     </div>
+    <button on:click={() => editTodo()}>EDIT TODO</button>
+    <button>DELETE TODO</button>
   {/each}
 </main>
 

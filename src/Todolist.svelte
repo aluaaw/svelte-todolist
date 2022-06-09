@@ -1,5 +1,6 @@
 <script>
   import { todolist } from "./store";
+  import { validateString, initData } from "./utils";
   let todo = "";
   let list = [];
 
@@ -8,9 +9,13 @@
   }
 
   function addTodo() {
-    list.push(todo);
-    $todolist = list;
-    todo = "";
+    if (validateString(todo) === false) {
+      todo = initData();
+    } else {
+      list.push(todo);
+      $todolist = list;
+      todo = initData();
+    }
   }
 </script>
 
@@ -22,5 +27,5 @@
     bind:value={todo}
     on:keypress={(e) => handleKeypress(e)}
   />
-  <button on:click={addTodo}>ADD</button>
+  <button on:click={addTodo}>ADD TODO</button>
 </main>
